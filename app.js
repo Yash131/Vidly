@@ -1,6 +1,4 @@
 //Modules
-const Joi = require("joi");
-Joi.objectId = require("joi-objectid")(Joi);
 const app = require("express")();
 const winston = require("winston");
 
@@ -15,6 +13,9 @@ require("./startup/routes")(app);
 
 // Set a env to pass this error
 require("./startup/config")();
+
+// Production middlewares
+require("./startup/prod")(app);
 
 // Node Server Connections
 const port = process.env.PORT || 3000;
